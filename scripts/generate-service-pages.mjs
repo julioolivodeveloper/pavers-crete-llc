@@ -109,7 +109,7 @@ function renderServicePage(service, index) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link rel="icon" href="../assets/logo.jpg" />
-    <link rel="stylesheet" href="../styles.css?v=11" />
+    <link rel="stylesheet" href="../styles.css?v=12" />
   </head>
   <body class="service-detail-page">
     <header class="site-header" data-header>
@@ -254,7 +254,7 @@ function renderServicePage(service, index) {
     </div>
 
     <script src="../assets/lucide.min.js"></script>
-    <script src="../script.js?v=9"></script>
+    <script src="../script.js?v=10"></script>
   </body>
 </html>
 `;

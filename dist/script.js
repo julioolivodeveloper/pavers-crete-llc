@@ -21,6 +21,7 @@ const reviewSlides = Array.from(document.querySelectorAll("[data-review-slide]")
 const reviewPrev = document.querySelector("[data-review-prev]");
 const reviewNext = document.querySelector("[data-review-next]");
 const reviewCount = document.querySelector("[data-review-count]");
+const comparisonSliders = Array.from(document.querySelectorAll("[data-comparison]"));
 const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
@@ -251,6 +252,21 @@ if (reviewViewport && reviewTrack && reviewSlides.length) {
   });
   updateReviewCarousel();
 }
+
+comparisonSliders.forEach((comparison) => {
+  const range = comparison.querySelector("[data-comparison-range]");
+  if (!range) return;
+
+  const updateComparison = () => {
+    comparison.style.setProperty("--compare-position", `${range.value}%`);
+    range.setAttribute("aria-valuetext", `${range.value}% of the before photo revealed`);
+  };
+
+  range.addEventListener("input", updateComparison, { passive: true });
+  range.addEventListener("focus", () => comparison.classList.add("is-focused"));
+  range.addEventListener("blur", () => comparison.classList.remove("is-focused"));
+  updateComparison();
+});
 
 heroDots.forEach((dot) => {
   dot.addEventListener("click", () => {

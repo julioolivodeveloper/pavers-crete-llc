@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=11" />
+    <link rel="stylesheet" href="styles.css?v=12" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -307,6 +307,51 @@
           </button>
           </div>
         </div>
+
+        <section class="before-after-section" id="before-after" aria-labelledby="before-after-title">
+          <div class="before-after-head">
+            <div>
+              <p class="section-kicker reveal">Project Transformations</p>
+              <h2 class="section-title reveal" id="before-after-title">Before &amp; After</h2>
+            </div>
+            <p class="section-copy reveal">A closer look at the details that change the way an outdoor space feels.</p>
+          </div>
+          <div class="before-after-grid">
+            <article class="before-after-project reveal">
+              <div class="comparison-frame comparison-frame-portrait" data-comparison style="--compare-position: 50%">
+                <img class="comparison-after-image" src="assets/before-after-walkway-after.jpg" alt="Paver walkway illuminated by landscape lights at dusk" loading="lazy" />
+                <div class="comparison-before-layer">
+                  <img src="assets/before-after-walkway-before.jpg" alt="Paver walkway and landscape in daylight before evening lights are shown" loading="lazy" />
+                </div>
+                <span class="comparison-label comparison-label-before">Before</span>
+                <span class="comparison-label comparison-label-after">After</span>
+                <span class="comparison-divider" aria-hidden="true"><span><i data-lucide="arrow-left-right"></i></span></span>
+                <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Reveal the before photo of the paver walkway by moving right; reveal the after photo by moving left" data-comparison-range />
+              </div>
+              <div class="comparison-copy">
+                <div class="comparison-title-row"><span>01</span><h3>Paver Walkway &amp; Lighting</h3></div>
+                <p>See the finished paver path in daylight and again with the landscape lighting on after dusk.</p>
+              </div>
+            </article>
+
+            <article class="before-after-project reveal">
+              <div class="comparison-frame comparison-frame-landscape" data-comparison style="--compare-position: 50%">
+                <img class="comparison-after-image" src="assets/before-after-stonework-after.jpg" alt="Completed residential exterior with finished entry stonework" loading="lazy" />
+                <div class="comparison-before-layer">
+                  <img src="assets/before-after-stonework-before.jpg" alt="Residential masonry and stonework during construction" loading="lazy" />
+                </div>
+                <span class="comparison-label comparison-label-before">Before</span>
+                <span class="comparison-label comparison-label-after">After</span>
+                <span class="comparison-divider" aria-hidden="true"><span><i data-lucide="arrow-left-right"></i></span></span>
+                <input class="comparison-range" type="range" min="0" max="100" value="50" aria-label="Reveal the before photo of the residential stonework by moving right; reveal the after photo by moving left" data-comparison-range />
+              </div>
+              <div class="comparison-copy">
+                <div class="comparison-title-row"><span>02</span><h3>Residential Stonework</h3></div>
+                <p>Follow the masonry from active construction through to the completed exterior.</p>
+              </div>
+            </article>
+          </div>
+        </section>
       </section>
 
       <section class="videos-section" id="videos" aria-labelledby="videos-title">
@@ -555,6 +600,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=9"></script>
+    <script src="script.js?v=10"></script>
   </body>
 </html>

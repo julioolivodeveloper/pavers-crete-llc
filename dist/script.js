@@ -1,6 +1,7 @@
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
+const serviceMenuToggles = Array.from(document.querySelectorAll("[data-services-toggle]"));
 const heroSlides = Array.from(document.querySelectorAll(".hero-bg"));
 const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
 const videoViewport = document.querySelector("[data-video-viewport]");
@@ -334,17 +335,39 @@ if (typewriter && !prefersReducedMotion) {
   window.setTimeout(typeNextCharacter, 1200);
 }
 
+function closeMobileNav() {
+  nav?.classList.remove("is-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+  serviceMenuToggles.forEach((toggle) => {
+    toggle.setAttribute("aria-expanded", "false");
+    const menu = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (menu) menu.hidden = true;
+  });
+}
+
+serviceMenuToggles.forEach((toggle) => {
+  const menu = document.getElementById(toggle.getAttribute("aria-controls"));
+  if (!menu) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    menu.hidden = isOpen;
+  });
+});
+
 if (navToggle && nav) {
   navToggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", String(isOpen));
+    if (nav.classList.contains("is-open")) {
+      closeMobileNav();
+      return;
+    }
+    nav.classList.add("is-open");
+    navToggle.setAttribute("aria-expanded", "true");
   });
 
   nav.addEventListener("click", (event) => {
-    if (event.target.matches("a")) {
-      nav.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
+    if (event.target.closest("a, .nav-cta")) closeMobileNav();
   });
 }
 
@@ -555,7 +578,6 @@ document.addEventListener("keydown", (event) => {
   closeLightbox();
   if (chatPanel && chatPanel.classList.contains("is-open")) closeChat();
   if (nav && nav.classList.contains("is-open")) {
-    nav.classList.remove("is-open");
-    if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+    closeMobileNav();
   }
 });

@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=17" />
+    <link rel="stylesheet" href="styles.css?v=18" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -31,14 +31,25 @@
         <i data-lucide="menu"></i>
       </button>
 
-      <nav class="main-nav" data-nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#work">Work</a>
-        <a href="#videos">Videos</a>
-        <a href="#reviews">Reviews</a>
-        <button class="nav-cta contact-trigger" type="button">Contact</button>
+      <nav class="main-nav" data-nav aria-label="Main navigation">
+        <a href="#about"><i class="nav-icon" data-lucide="info" aria-hidden="true"></i><span>About</span></a>
+        <a class="nav-services-link" href="#services"><i class="nav-icon" data-lucide="blocks" aria-hidden="true"></i><span>Services</span></a>
+        <button class="nav-services-toggle" type="button" aria-expanded="false" aria-controls="mobile-service-menu" data-services-toggle>
+          <i class="nav-icon" data-lucide="blocks" aria-hidden="true"></i><span>Services</span><i class="nav-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-service-submenu" id="mobile-service-menu" data-services-menu hidden>
+          <a href="services/paver-patios.html"><i class="nav-icon" data-lucide="blocks" aria-hidden="true"></i><span>Paver Patios</span></a>
+          <a href="services/pool-decks.html"><i class="nav-icon" data-lucide="waves" aria-hidden="true"></i><span>Pool Decks</span></a>
+          <a href="services/walkways-steps.html"><i class="nav-icon" data-lucide="route" aria-hidden="true"></i><span>Walkways and Steps</span></a>
+          <a href="services/retaining-walls.html"><i class="nav-icon" data-lucide="landmark" aria-hidden="true"></i><span>Retaining Walls</span></a>
+          <a href="services/concrete-installation.html"><i class="nav-icon" data-lucide="square-stack" aria-hidden="true"></i><span>Concrete Installation</span></a>
+          <a href="services/finishing-details.html"><i class="nav-icon" data-lucide="sparkles" aria-hidden="true"></i><span>Finishing Details</span></a>
+        </div>
+        <a href="#process"><i class="nav-icon" data-lucide="list-checks" aria-hidden="true"></i><span>Process</span></a>
+        <a href="#work"><i class="nav-icon" data-lucide="images" aria-hidden="true"></i><span>Work</span></a>
+        <a href="#videos"><i class="nav-icon" data-lucide="play" aria-hidden="true"></i><span>Videos</span></a>
+        <a href="#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
+        <button class="nav-cta contact-trigger" type="button"><i class="nav-icon" data-lucide="message-circle" aria-hidden="true"></i><span>Contact</span></button>
       </nav>
     </header>
 
@@ -596,6 +607,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=11"></script>
+    <script src="script.js?v=12"></script>
   </body>
 </html>

@@ -8,6 +8,7 @@ const outputDirectory = path.join(projectRoot, "dist", "services");
 const services = [
   {
     slug: "paver-patios",
+    icon: "blocks",
     title: "Paver Patios",
     description: "Custom paver patio installation with thoughtful layouts, borders, transitions, and detailed finishing for outdoor living spaces.",
     heroImage: "hero-pergola.jpg",
@@ -21,6 +22,7 @@ const services = [
   },
   {
     slug: "pool-decks",
+    icon: "waves",
     title: "Pool Decks",
     description: "Paver pool deck installation with coordinated coping, considered transitions, and careful attention to drainage and finish.",
     heroImage: "hero-pool.jpg",
@@ -34,6 +36,7 @@ const services = [
   },
   {
     slug: "walkways-steps",
+    icon: "route",
     title: "Walkways and Steps",
     description: "Paver walkways, entry paths, and steps designed to connect outdoor spaces with clean lines and considered transitions.",
     heroImage: "project-sidewalk.jpg",
@@ -47,6 +50,7 @@ const services = [
   },
   {
     slug: "retaining-walls",
+    icon: "landmark",
     title: "Retaining Walls",
     description: "Stone retaining and seat walls, borders, and columns integrated with the grade and overall outdoor layout.",
     heroImage: "project-retaining-wall.jpg",
@@ -60,6 +64,7 @@ const services = [
   },
   {
     slug: "concrete-installation",
+    icon: "square-stack",
     title: "Concrete Installation",
     description: "Concrete patios, slabs, pool surrounds, and flatwork with planned edges, finishes, and transitions.",
     heroImage: "project-stone-patio.jpg",
@@ -73,6 +78,7 @@ const services = [
   },
   {
     slug: "finishing-details",
+    icon: "sparkles",
     title: "Finishing Details",
     description: "Paver borders, edge details, transitions, lighting-ready layouts, cleanup, and final project presentation.",
     heroImage: "project-lit-steps.jpg",
@@ -93,6 +99,8 @@ function renderServicePage(service, index) {
   const title = escapeHtml(service.title);
   const description = escapeHtml(service.description);
   const bullets = service.bullets.map((item) => `<li><i data-lucide="check" aria-hidden="true"></i><span>${escapeHtml(item)}</span></li>`).join("\n            ");
+  const serviceMenuLinks = services.map((item) => `
+          <a href="./${item.slug}.html"${item.slug === service.slug ? ' aria-current="page"' : ""}><i class="nav-icon" data-lucide="${item.icon}" aria-hidden="true"></i><span>${escapeHtml(item.title)}</span></a>`).join("");
   const relatedLinks = related.map((item) => `
             <a class="service-related-link" href="./${item.slug}.html">
               <span>${escapeHtml(item.title)}</span><i data-lucide="arrow-up-right" aria-hidden="true"></i>
@@ -109,7 +117,7 @@ function renderServicePage(service, index) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link rel="icon" href="../assets/logo.jpg" />
-    <link rel="stylesheet" href="../styles.css?v=17" />
+    <link rel="stylesheet" href="../styles.css?v=18" />
   </head>
   <body class="service-detail-page">
     <header class="site-header" data-header>
@@ -119,12 +127,17 @@ function renderServicePage(service, index) {
       </a>
       <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-nav-toggle><i data-lucide="menu"></i></button>
       <nav class="main-nav" data-nav aria-label="Main navigation">
-        <a href="../index.html#about">About</a>
-        <a href="../index.html#services">Services</a>
-        <a href="../index.html#process">Process</a>
-        <a href="../index.html#work">Work</a>
-        <a href="../index.html#reviews">Reviews</a>
-        <button class="nav-cta contact-trigger" type="button">Contact</button>
+        <a href="../index.html#about"><i class="nav-icon" data-lucide="info" aria-hidden="true"></i><span>About</span></a>
+        <a class="nav-services-link" href="../index.html#services"><i class="nav-icon" data-lucide="blocks" aria-hidden="true"></i><span>Services</span></a>
+        <button class="nav-services-toggle" type="button" aria-expanded="false" aria-controls="mobile-service-menu" data-services-toggle>
+          <i class="nav-icon" data-lucide="blocks" aria-hidden="true"></i><span>Services</span><i class="nav-chevron" data-lucide="chevron-down" aria-hidden="true"></i>
+        </button>
+        <div class="nav-service-submenu" id="mobile-service-menu" data-services-menu hidden>${serviceMenuLinks}
+        </div>
+        <a href="../index.html#process"><i class="nav-icon" data-lucide="list-checks" aria-hidden="true"></i><span>Process</span></a>
+        <a href="../index.html#work"><i class="nav-icon" data-lucide="images" aria-hidden="true"></i><span>Work</span></a>
+        <a href="../index.html#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
+        <button class="nav-cta contact-trigger" type="button"><i class="nav-icon" data-lucide="message-circle" aria-hidden="true"></i><span>Contact</span></button>
       </nav>
     </header>
 
@@ -253,7 +266,7 @@ function renderServicePage(service, index) {
     </div>
 
     <script src="../assets/lucide.min.js"></script>
-    <script src="../script.js?v=11"></script>
+    <script src="../script.js?v=12"></script>
   </body>
 </html>
 `;

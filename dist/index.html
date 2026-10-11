@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=7" />
+    <link rel="stylesheet" href="styles.css?v=8" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -241,52 +241,65 @@
       </section>
 
       <section class="work" id="work">
-        <div class="section-shell section-heading">
-          <p class="section-kicker reveal">Project Gallery</p>
-          <h2 class="section-title reveal">Real work from patios, pools, walkways, walls, and outdoor living spaces.</h2>
+        <div class="section-shell gallery-carousel-head">
+          <div class="gallery-head-copy">
+            <p class="section-kicker reveal">Project Gallery</p>
+            <h2 class="section-title reveal">Real work from patios, pools, walkways, walls, and outdoor living spaces.</h2>
+          </div>
+          <div class="gallery-carousel-controls" role="group" aria-label="Project photo carousel controls">
+            <span class="gallery-count" data-gallery-count aria-live="polite">01-03 / 10</span>
+            <button class="gallery-arrow" type="button" data-gallery-prev aria-label="Previous photos" title="Previous photos" disabled>
+              <i data-lucide="arrow-left"></i>
+            </button>
+            <button class="gallery-arrow" type="button" data-gallery-next aria-label="Next photos" title="Next photos">
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="gallery-grid" aria-label="Project photo gallery">
-          <button class="gallery-card large reveal" type="button" data-lightbox="assets/hero-pergola.jpg" data-caption="Layered patio, wall, pergola, and paver walkway">
+        <div class="gallery-viewport" data-gallery-viewport role="region" aria-label="Pavers' Crete LLC project photo carousel" tabindex="0">
+          <div class="gallery-track" data-gallery-track>
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/hero-pergola.jpg" data-caption="Layered patio, wall, pergola, and paver walkway">
             <img src="assets/hero-pergola.jpg" alt="Paver patio with pergola and stone wall" loading="lazy" />
             <span>Outdoor Living Build</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-pool-brick.jpg" data-caption="Pool deck with brick detail and curved layout">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-pool-brick.jpg" data-caption="Pool deck with brick detail and curved layout">
             <img src="assets/project-pool-brick.jpg" alt="Pool deck with brick paver surround" loading="lazy" />
             <span>Pool Deck</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-sidewalk.jpg" data-caption="Side-yard walkway with border stones">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-sidewalk.jpg" data-caption="Side-yard walkway with border stones">
             <img src="assets/project-sidewalk.jpg" alt="Side-yard paver walkway with border" loading="lazy" />
             <span>Walkway</span>
           </button>
-          <button class="gallery-card tall reveal" type="button" data-lightbox="assets/project-lit-steps.jpg" data-caption="Illuminated steps with paver pattern">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-lit-steps.jpg" data-caption="Illuminated steps with paver pattern">
             <img src="assets/project-lit-steps.jpg" alt="Lit paver steps at night" loading="lazy" />
             <span>Lit Steps</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-patio-wide.jpg" data-caption="Wide patio with stone border and open entertaining space">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-patio-wide.jpg" data-caption="Wide patio with stone border and open entertaining space">
             <img src="assets/project-patio-wide.jpg" alt="Large paver patio with stone border" loading="lazy" />
             <span>Patio Surface</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-stairs.jpg" data-caption="Stone stair build with lighting-ready steps">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-stairs.jpg" data-caption="Stone stair build with lighting-ready steps">
             <img src="assets/project-stairs.jpg" alt="Stone staircase with paver details" loading="lazy" />
             <span>Stone Steps</span>
           </button>
-          <button class="gallery-card wide reveal" type="button" data-lightbox="assets/project-stone-patio.jpg" data-caption="Stone patio with fire feature and water view">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-stone-patio.jpg" data-caption="Stone patio with fire feature and water view">
             <img src="assets/project-stone-patio.jpg" alt="Stone patio near a lake with fire feature" loading="lazy" />
             <span>Waterfront Patio</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-retaining-wall.jpg" data-caption="Retaining wall and patio build with raised structure">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-retaining-wall.jpg" data-caption="Retaining wall and patio build with raised structure">
             <img src="assets/project-retaining-wall.jpg" alt="Retaining wall and paver patio project" loading="lazy" />
             <span>Wall System</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-night-courtyard.jpg" data-caption="Night courtyard with warm lighting">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-night-courtyard.jpg" data-caption="Night courtyard with warm lighting">
             <img src="assets/project-night-courtyard.jpg" alt="Paver courtyard lit at night" loading="lazy" />
             <span>Night Finish</span>
           </button>
-          <button class="gallery-card reveal" type="button" data-lightbox="assets/project-round-patio.jpg" data-caption="Rounded paver patio with curved border">
+          <button class="gallery-card reveal" type="button" data-gallery-slide data-lightbox="assets/project-round-patio.jpg" data-caption="Rounded paver patio with curved border">
             <img src="assets/project-round-patio.jpg" alt="Rounded paver patio" loading="lazy" />
             <span>Round Patio</span>
           </button>
+          </div>
         </div>
       </section>
 
@@ -545,6 +558,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=7"></script>
+    <script src="script.js?v=8"></script>
   </body>
 </html>

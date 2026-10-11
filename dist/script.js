@@ -9,6 +9,12 @@ const videoSlides = Array.from(document.querySelectorAll(".reel-slide"));
 const videoPrev = document.querySelector("[data-video-prev]");
 const videoNext = document.querySelector("[data-video-next]");
 const videoCount = document.querySelector("[data-video-count]");
+const galleryViewport = document.querySelector("[data-gallery-viewport]");
+const galleryTrack = document.querySelector("[data-gallery-track]");
+const gallerySlides = Array.from(document.querySelectorAll("[data-gallery-slide]"));
+const galleryPrev = document.querySelector("[data-gallery-prev]");
+const galleryNext = document.querySelector("[data-gallery-next]");
+const galleryCount = document.querySelector("[data-gallery-count]");
 const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
@@ -122,6 +128,64 @@ if (videoViewport && videoTrack && videoSlides.length) {
     }
   });
   updateVideoCarousel();
+}
+
+function updateGalleryCarousel() {
+  if (!galleryViewport || !galleryTrack || !gallerySlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(galleryTrack).columnGap) || 0;
+  const step = gallerySlides[0].getBoundingClientRect().width + gap;
+  if (!step) return;
+
+  const index = Math.max(0, Math.min(gallerySlides.length - 1, Math.round(galleryViewport.scrollLeft / step)));
+  const visibleCount = Math.max(1, Math.floor((galleryViewport.clientWidth + gap) / step));
+  const lastVisible = Math.min(gallerySlides.length, index + visibleCount);
+  const formatIndex = (value) => String(value).padStart(2, "0");
+
+  if (galleryCount) {
+    galleryCount.textContent = `${formatIndex(index + 1)}-${formatIndex(lastVisible)} / ${formatIndex(gallerySlides.length)}`;
+  }
+  if (galleryPrev) galleryPrev.disabled = galleryViewport.scrollLeft <= 2;
+  if (galleryNext) {
+    galleryNext.disabled = galleryViewport.scrollLeft + galleryViewport.clientWidth >= galleryViewport.scrollWidth - 2;
+  }
+}
+
+function scrollGalleryCarousel(direction) {
+  if (!galleryViewport || !galleryTrack || !gallerySlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(galleryTrack).columnGap) || 0;
+  const step = gallerySlides[0].getBoundingClientRect().width + gap;
+  const visibleCount = Math.max(1, Math.floor((galleryViewport.clientWidth + gap) / step));
+  galleryViewport.scrollBy({
+    left: direction * step * Math.max(1, visibleCount - 1),
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
+if (galleryViewport && galleryTrack && gallerySlides.length) {
+  let galleryScrollFrame = 0;
+  galleryViewport.addEventListener(
+    "scroll",
+    () => {
+      if (galleryScrollFrame) return;
+      galleryScrollFrame = window.requestAnimationFrame(() => {
+        galleryScrollFrame = 0;
+        updateGalleryCarousel();
+      });
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", updateGalleryCarousel);
+  if (galleryPrev) galleryPrev.addEventListener("click", () => scrollGalleryCarousel(-1));
+  if (galleryNext) galleryNext.addEventListener("click", () => scrollGalleryCarousel(1));
+  galleryViewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollGalleryCarousel(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  });
+  updateGalleryCarousel();
 }
 
 heroDots.forEach((dot) => {

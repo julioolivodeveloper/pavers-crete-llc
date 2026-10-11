@@ -1561,8 +1561,10 @@ a {
 }
 
 .hero-proof {
+  left: max(56px, calc((100vw - 1160px) / 2 + 36px));
   bottom: 57px;
-  width: min(1160px, calc(100% - 72px));
+  width: min(900px, calc(100vw - 360px));
+  transform: none;
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 0;

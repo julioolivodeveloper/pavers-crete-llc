@@ -4,6 +4,7 @@ import path from "node:path";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const outputDirectory = path.join(projectRoot, "dist", "services");
+const siteUrl = "https://julioolivodeveloper.github.io/pavers-crete-llc";
 
 const services = [
   {
@@ -98,6 +99,9 @@ function renderServicePage(service, index) {
   const related = [services[(index + 1) % services.length], services[(index + 2) % services.length]];
   const title = escapeHtml(service.title);
   const description = escapeHtml(service.description);
+  const pageUrl = `${siteUrl}/services/${service.slug}.html`;
+  const imageUrl = `${siteUrl}/assets/${service.heroImage}`;
+  const imageAlt = escapeHtml(service.heroAlt);
   const bullets = service.bullets.map((item) => `<li><i data-lucide="check" aria-hidden="true"></i><span>${escapeHtml(item)}</span></li>`).join("\n            ");
   const serviceMenuLinks = services.map((item) => `
           <a href="./${item.slug}.html"${item.slug === service.slug ? ' aria-current="page"' : ""}><i class="nav-icon" data-lucide="${item.icon}" aria-hidden="true"></i><span>${escapeHtml(item.title)}</span></a>`).join("");
@@ -113,6 +117,22 @@ function renderServicePage(service, index) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="${description}" />
     <title>${title} | Pavers' Crete LLC</title>
+    <link rel="canonical" href="${pageUrl}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pavers' Crete LLC" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="${pageUrl}" />
+    <meta property="og:title" content="${title} | Pavers' Crete LLC" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="${imageUrl}" />
+    <meta property="og:image:secure_url" content="${imageUrl}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="${imageAlt}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title} | Pavers' Crete LLC" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${imageUrl}" />
+    <meta name="twitter:image:alt" content="${imageAlt}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />

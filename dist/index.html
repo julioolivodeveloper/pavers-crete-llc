@@ -312,6 +312,44 @@
       <i data-lucide="phone-call"></i>
     </button>
 
+    <button class="chat-launcher" type="button" aria-label="Ask a question" aria-expanded="false" aria-controls="faq-chat" data-chat-toggle>
+      <i data-lucide="messages-square"></i>
+      <span>Ask a question</span>
+    </button>
+
+    <section class="faq-chat" id="faq-chat" aria-label="Frequently asked questions assistant" aria-hidden="true" data-chat-panel>
+      <header class="chat-header">
+        <span class="chat-avatar" aria-hidden="true"><i data-lucide="message-circle"></i></span>
+        <div class="chat-heading">
+          <strong>Pavers' Crete Assistant</strong>
+          <span><i></i> Here to help</span>
+        </div>
+        <button class="chat-close" type="button" aria-label="Close assistant" data-chat-close>
+          <i data-lucide="x"></i>
+        </button>
+      </header>
+      <div class="chat-log" role="log" aria-live="polite" aria-relevant="additions" data-chat-log>
+        <article class="chat-message is-bot">
+          <p>Hi! I can help with services, estimates, project timing, and more. What would you like to know?</p>
+        </article>
+        <div class="chat-suggestions" data-chat-suggestions aria-label="Popular questions">
+          <button type="button" data-chat-question="What services do you offer?">Services</button>
+          <button type="button" data-chat-question="How can I get an estimate?">Estimates</button>
+          <button type="button" data-chat-question="How long does a project take?">Timing</button>
+          <button type="button" data-chat-question="What areas do you serve?">Service area</button>
+        </div>
+      </div>
+      <form class="chat-composer" data-chat-form>
+        <label class="visually-hidden" for="chat-question">Ask a question</label>
+        <input id="chat-question" name="question" type="text" placeholder="Ask a question..." autocomplete="off" data-chat-input />
+        <button type="submit" aria-label="Send question"><i data-lucide="arrow-up"></i></button>
+      </form>
+      <div class="chat-contact-row">
+        <span>Need help with your project?</span>
+        <button type="button" data-chat-contact>Contact the team</button>
+      </div>
+    </section>
+
     <div class="contact-modal" data-modal aria-hidden="true">
       <div class="modal-backdrop" data-close-modal></div>
       <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">

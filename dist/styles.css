@@ -2132,8 +2132,8 @@ a {
 .videos-section {
   padding: 104px 0 92px;
   overflow: hidden;
-  background: var(--paper);
-  border-bottom: 1px solid rgba(109, 103, 94, 0.18);
+  background: #204f70;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .video-carousel-head {
@@ -2154,13 +2154,18 @@ a {
 
 .video-head-copy .section-title {
   max-width: 680px;
-  color: var(--navy);
+  color: #ffffff;
   font-size: 3rem;
+}
+
+.video-head-copy .section-kicker {
+  color: var(--cream);
 }
 
 .video-head-copy .section-copy {
   max-width: 620px;
   margin-top: 14px;
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .video-carousel-controls {
@@ -2172,7 +2177,7 @@ a {
 
 .video-count {
   min-width: 78px;
-  color: var(--stone-dark);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.76rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
@@ -2241,7 +2246,7 @@ a {
   aspect-ratio: 9 / 16;
   overflow: hidden;
   background: #101114;
-  border: 1px solid rgba(22, 35, 52, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 6px;
   box-shadow: var(--soft-shadow);
 }
@@ -2264,7 +2269,7 @@ a {
 }
 
 .reel-index {
-  color: var(--burgundy);
+  color: #f0cf9d;
   font-family: "Barlow Condensed", "Manrope", sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -2274,14 +2279,14 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  color: var(--navy);
+  color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
   transition: color 160ms ease;
 }
 
 .reel-link:hover {
-  color: var(--burgundy);
+  color: #f0cf9d;
 }
 
 .reel-link svg {

@@ -90,16 +90,14 @@ a {
 }
 
 .brand-mark {
-  position: relative;
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   flex: 0 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: var(--radius);
-  background:
-    linear-gradient(135deg, var(--burgundy) 0 48%, transparent 48% 52%, var(--navy) 52% 100%);
-  transform: rotate(45deg);
-  box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 6px;
+  background: #ffffff;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.16);
 }
 
 .brand strong {

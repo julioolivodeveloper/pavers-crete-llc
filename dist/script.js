@@ -15,6 +15,12 @@ const gallerySlides = Array.from(document.querySelectorAll("[data-gallery-slide]
 const galleryPrev = document.querySelector("[data-gallery-prev]");
 const galleryNext = document.querySelector("[data-gallery-next]");
 const galleryCount = document.querySelector("[data-gallery-count]");
+const reviewViewport = document.querySelector("[data-review-viewport]");
+const reviewTrack = document.querySelector("[data-review-track]");
+const reviewSlides = Array.from(document.querySelectorAll("[data-review-slide]"));
+const reviewPrev = document.querySelector("[data-review-prev]");
+const reviewNext = document.querySelector("[data-review-next]");
+const reviewCount = document.querySelector("[data-review-count]");
 const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
@@ -186,6 +192,64 @@ if (galleryViewport && galleryTrack && gallerySlides.length) {
     }
   });
   updateGalleryCarousel();
+}
+
+function updateReviewCarousel() {
+  if (!reviewViewport || !reviewTrack || !reviewSlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(reviewTrack).columnGap) || 0;
+  const step = reviewSlides[0].getBoundingClientRect().width + gap;
+  if (!step) return;
+
+  const index = Math.max(0, Math.min(reviewSlides.length - 1, Math.round(reviewViewport.scrollLeft / step)));
+  const visibleCount = Math.max(1, Math.floor((reviewViewport.clientWidth + gap) / step));
+  const lastVisible = Math.min(reviewSlides.length, index + visibleCount);
+  const formatIndex = (value) => String(value).padStart(2, "0");
+
+  if (reviewCount) {
+    reviewCount.textContent = `${formatIndex(index + 1)}-${formatIndex(lastVisible)} / ${formatIndex(reviewSlides.length)}`;
+  }
+  if (reviewPrev) reviewPrev.disabled = reviewViewport.scrollLeft <= 2;
+  if (reviewNext) {
+    reviewNext.disabled = reviewViewport.scrollLeft + reviewViewport.clientWidth >= reviewViewport.scrollWidth - 2;
+  }
+}
+
+function scrollReviewCarousel(direction) {
+  if (!reviewViewport || !reviewTrack || !reviewSlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(reviewTrack).columnGap) || 0;
+  const step = reviewSlides[0].getBoundingClientRect().width + gap;
+  const visibleCount = Math.max(1, Math.floor((reviewViewport.clientWidth + gap) / step));
+  reviewViewport.scrollBy({
+    left: direction * step * Math.max(1, visibleCount - 1),
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
+if (reviewViewport && reviewTrack && reviewSlides.length) {
+  let reviewScrollFrame = 0;
+  reviewViewport.addEventListener(
+    "scroll",
+    () => {
+      if (reviewScrollFrame) return;
+      reviewScrollFrame = window.requestAnimationFrame(() => {
+        reviewScrollFrame = 0;
+        updateReviewCarousel();
+      });
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", updateReviewCarousel);
+  if (reviewPrev) reviewPrev.addEventListener("click", () => scrollReviewCarousel(-1));
+  if (reviewNext) reviewNext.addEventListener("click", () => scrollReviewCarousel(1));
+  reviewViewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollReviewCarousel(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  });
+  updateReviewCarousel();
 }
 
 heroDots.forEach((dot) => {

@@ -2510,3 +2510,126 @@ a {
     transition: none;
   }
 }
+
+.review-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.review-carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.review-count {
+  min-width: 78px;
+  color: var(--stone-dark);
+  font-size: 0.76rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.review-arrow {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  color: var(--navy);
+  background: var(--paper);
+  border: 1px solid rgba(22, 35, 52, 0.24);
+  border-radius: 5px;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.review-arrow:hover:not(:disabled) {
+  color: #ffffff;
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+.review-arrow:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+.review-arrow svg {
+  width: 19px;
+  height: 19px;
+}
+
+.review-viewport {
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.review-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.review-grid.review-track {
+  width: max-content;
+  display: flex;
+  gap: 16px;
+  padding: 4px 2px 18px;
+}
+
+.review-track .review-card {
+  width: 348px;
+  min-height: 264px;
+  display: flex;
+  flex: 0 0 348px;
+  flex-direction: column;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.review-track .review-card footer {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.review-arrow:focus-visible,
+.review-viewport:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+@media (max-width: 820px) {
+  .review-actions {
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .review-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .review-carousel-controls {
+    align-self: flex-end;
+  }
+
+  .review-track .review-card {
+    width: min(78vw, 300px);
+    flex-basis: min(78vw, 300px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .review-arrow,
+  .review-viewport {
+    scroll-behavior: auto;
+    transition: none;
+  }
+}

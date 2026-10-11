@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=8" />
+    <link rel="stylesheet" href="styles.css?v=9" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -414,38 +414,51 @@
             <p class="section-kicker reveal">Google Reviews</p>
             <h2 class="section-title reveal">5.0 rating from homeowners who mention detail, timing, and cleanup.</h2>
           </div>
-          <a class="google-btn reveal" href="https://www.google.com/maps?cid=13667308921485443592" target="_blank" rel="noopener">
-            <i data-lucide="external-link"></i>
-            View on Google
-          </a>
+          <div class="review-actions">
+            <div class="review-carousel-controls" role="group" aria-label="Review carousel controls">
+              <span class="review-count" data-review-count aria-live="polite">01-03 / 05</span>
+              <button class="review-arrow" type="button" data-review-prev aria-label="Previous reviews" title="Previous reviews" disabled>
+                <i data-lucide="arrow-left"></i>
+              </button>
+              <button class="review-arrow" type="button" data-review-next aria-label="Next reviews" title="Next reviews">
+                <i data-lucide="arrow-right"></i>
+              </button>
+            </div>
+            <a class="google-btn reveal" href="https://www.google.com/maps?cid=13667308921485443592" target="_blank" rel="noopener">
+              <i data-lucide="external-link"></i>
+              View on Google
+            </a>
+          </div>
         </div>
 
-        <div class="review-grid">
-          <article class="review-card reveal">
+        <div class="review-viewport" data-review-viewport role="region" aria-label="Pavers' Crete LLC customer reviews carousel" tabindex="0">
+        <div class="review-grid review-track" data-review-track>
+          <article class="review-card reveal" data-review-slide>
             <div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p>Professional, punctual team with notable attention to detail on entrance pavers and a patio extension.</p>
             <footer>P.E. Gates <span>Google review summary</span></footer>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-review-slide>
             <div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p>Two major projects completed as estimated, on time, and without surprises.</p>
             <footer>James Lambert <span>Google review summary</span></footer>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-review-slide>
             <div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p>Pond-side paver patio praised for attention to detail, setup, cleanup, and the final outcome.</p>
             <footer>Mike Duskus <span>Google review summary</span></footer>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-review-slide>
             <div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p>Project finished ahead of schedule with clean work and quality beyond expectations.</p>
             <footer>John Livingston <span>Google review summary</span></footer>
           </article>
-          <article class="review-card reveal">
+          <article class="review-card reveal" data-review-slide>
             <div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <p>Workmanship, promise-keeping, and detail gave confidence for future projects.</p>
             <footer>Kathy Spinozzi <span>Google review summary</span></footer>
           </article>
+        </div>
         </div>
       </section>
 
@@ -558,6 +571,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=9"></script>
   </body>
 </html>

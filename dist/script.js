@@ -262,6 +262,37 @@ comparisonSliders.forEach((comparison) => {
     range.setAttribute("aria-valuetext", `${range.value}% of the before photo revealed`);
   };
 
+  const updateFromPointer = (event) => {
+    const bounds = comparison.getBoundingClientRect();
+    if (!bounds.width) return;
+
+    const position = Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100));
+    range.value = String(Math.round(position));
+    updateComparison();
+  };
+
+  range.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    event.preventDefault();
+    range.focus({ preventScroll: true });
+    range.setPointerCapture(event.pointerId);
+    comparison.classList.add("is-dragging");
+    updateFromPointer(event);
+  });
+
+  range.addEventListener("pointermove", (event) => {
+    if (range.hasPointerCapture(event.pointerId)) updateFromPointer(event);
+  });
+
+  const stopDragging = (event) => {
+    if (range.hasPointerCapture(event.pointerId)) range.releasePointerCapture(event.pointerId);
+    comparison.classList.remove("is-dragging");
+  };
+
+  range.addEventListener("pointerup", stopDragging);
+  range.addEventListener("pointercancel", stopDragging);
+  range.addEventListener("lostpointercapture", () => comparison.classList.remove("is-dragging"));
+
   range.addEventListener("input", updateComparison, { passive: true });
   range.addEventListener("focus", () => comparison.classList.add("is-focused"));
   range.addEventListener("blur", () => comparison.classList.remove("is-focused"));

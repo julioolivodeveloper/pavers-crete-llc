@@ -3242,6 +3242,12 @@ a {
   background: #ffffff;
   box-shadow: 0 4px 16px rgba(10, 16, 22, 0.3);
   transform: translate(-50%, -50%);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.comparison-frame.is-dragging .comparison-divider > span {
+  box-shadow: 0 6px 20px rgba(10, 16, 22, 0.4);
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 .comparison-divider svg {

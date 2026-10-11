@@ -3,6 +3,12 @@ const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const heroSlides = Array.from(document.querySelectorAll(".hero-bg"));
 const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
+const videoViewport = document.querySelector("[data-video-viewport]");
+const videoTrack = document.querySelector("[data-video-track]");
+const videoSlides = Array.from(document.querySelectorAll(".reel-slide"));
+const videoPrev = document.querySelector("[data-video-prev]");
+const videoNext = document.querySelector("[data-video-next]");
+const videoCount = document.querySelector("[data-video-count]");
 const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
@@ -56,6 +62,66 @@ function showHeroSlide(index) {
 function startHeroSlideshow() {
   window.clearInterval(slideTimer);
   slideTimer = window.setInterval(() => showHeroSlide(currentSlide + 1), 5600);
+}
+
+function updateVideoCarousel() {
+  if (!videoViewport || !videoTrack || !videoSlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(videoTrack).columnGap) || 0;
+  const step = videoSlides[0].getBoundingClientRect().width + gap;
+  if (!step) return;
+
+  const index = Math.max(0, Math.min(videoSlides.length - 1, Math.round(videoViewport.scrollLeft / step)));
+  const visibleCount = Math.max(1, Math.floor((videoViewport.clientWidth + gap) / step));
+  const lastVisible = Math.min(videoSlides.length, index + visibleCount);
+  const formatIndex = (value) => String(value).padStart(2, "0");
+
+  if (videoCount) {
+    videoCount.textContent = `${formatIndex(index + 1)}-${formatIndex(lastVisible)} / ${formatIndex(videoSlides.length)}`;
+  }
+  if (videoPrev) videoPrev.disabled = videoViewport.scrollLeft <= 2;
+  if (videoNext) {
+    videoNext.disabled = videoViewport.scrollLeft + videoViewport.clientWidth >= videoViewport.scrollWidth - 2;
+  }
+}
+
+function scrollVideoCarousel(direction) {
+  if (!videoViewport || !videoTrack || !videoSlides.length) return;
+
+  const gap = Number.parseFloat(window.getComputedStyle(videoTrack).columnGap) || 0;
+  const step = videoSlides[0].getBoundingClientRect().width + gap;
+  const visibleCount = Math.max(1, Math.floor((videoViewport.clientWidth + gap) / step));
+  const advanceCount = Math.max(1, visibleCount - 1);
+
+  videoViewport.scrollBy({
+    left: direction * step * advanceCount,
+    behavior: prefersReducedMotion ? "auto" : "smooth",
+  });
+}
+
+if (videoViewport && videoTrack && videoSlides.length) {
+  let videoScrollFrame = 0;
+  videoViewport.addEventListener(
+    "scroll",
+    () => {
+      if (videoScrollFrame) return;
+      videoScrollFrame = window.requestAnimationFrame(() => {
+        videoScrollFrame = 0;
+        updateVideoCarousel();
+      });
+    },
+    { passive: true }
+  );
+  window.addEventListener("resize", updateVideoCarousel);
+  if (videoPrev) videoPrev.addEventListener("click", () => scrollVideoCarousel(-1));
+  if (videoNext) videoNext.addEventListener("click", () => scrollVideoCarousel(1));
+  videoViewport.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollVideoCarousel(event.key === "ArrowLeft" ? -1 : 1);
+    }
+  });
+  updateVideoCarousel();
 }
 
 heroDots.forEach((dot) => {

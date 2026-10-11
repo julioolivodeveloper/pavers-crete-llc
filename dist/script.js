@@ -2,6 +2,8 @@ const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const nav = document.querySelector("[data-nav]");
 const heroSlides = Array.from(document.querySelectorAll(".hero-bg"));
+const heroDots = Array.from(document.querySelectorAll("[data-hero-dot]"));
+const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
 const contactTriggers = Array.from(document.querySelectorAll(".contact-trigger"));
@@ -17,9 +19,11 @@ const chatLog = document.querySelector("[data-chat-log]");
 const chatSuggestions = document.querySelector("[data-chat-suggestions]");
 const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let currentSlide = 0;
 let lastFocusedElement = null;
+let slideTimer;
 
 if (window.lucide) {
   window.lucide.createIcons();
@@ -33,12 +37,60 @@ const onScroll = () => {
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
-if (heroSlides.length > 1) {
-  window.setInterval(() => {
-    heroSlides[currentSlide].classList.remove("is-active");
-    currentSlide = (currentSlide + 1) % heroSlides.length;
-    heroSlides[currentSlide].classList.add("is-active");
-  }, 5600);
+if (heroSlides.length > 1 && !prefersReducedMotion) {
+  startHeroSlideshow();
+}
+
+function showHeroSlide(index) {
+  if (!heroSlides.length) return;
+  heroSlides[currentSlide].classList.remove("is-active");
+  currentSlide = (index + heroSlides.length) % heroSlides.length;
+  heroSlides[currentSlide].classList.add("is-active");
+  heroDots.forEach((dot, dotIndex) => {
+    const isActive = dotIndex === currentSlide;
+    dot.classList.toggle("is-active", isActive);
+    dot.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function startHeroSlideshow() {
+  window.clearInterval(slideTimer);
+  slideTimer = window.setInterval(() => showHeroSlide(currentSlide + 1), 5600);
+}
+
+heroDots.forEach((dot) => {
+  dot.addEventListener("click", () => {
+    showHeroSlide(Number(dot.dataset.heroDot));
+    startHeroSlideshow();
+  });
+});
+
+if (typewriter && !prefersReducedMotion) {
+  const phrases = (typewriter.dataset.phrases || "").split("|").filter(Boolean);
+  let phraseIndex = 0;
+  let characterIndex = phrases[0]?.length || 0;
+  let deleting = false;
+
+  function typeNextCharacter() {
+    if (!phrases.length) return;
+    const phrase = phrases[phraseIndex];
+    typewriter.textContent = phrase.slice(0, characterIndex);
+    if (!deleting && characterIndex === phrase.length) {
+      deleting = true;
+      window.setTimeout(typeNextCharacter, 1750);
+      return;
+    }
+    if (deleting && characterIndex === 0) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      window.setTimeout(typeNextCharacter, 240);
+      return;
+    }
+    characterIndex += deleting ? -1 : 1;
+    window.setTimeout(typeNextCharacter, deleting ? 34 : 68);
+  }
+
+  window.setTimeout(typeNextCharacter, 1200);
 }
 
 if (navToggle && nav) {

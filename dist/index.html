@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=5" />
+    <link rel="stylesheet" href="styles.css?v=6" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -32,6 +32,7 @@
       </button>
 
       <nav class="main-nav" data-nav>
+        <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#process">Process</a>
         <a href="#work">Work</a>
@@ -93,17 +94,60 @@
         </div>
       </section>
 
-      <section class="intro-band">
-        <div class="section-shell intro-grid">
-          <div class="section-kicker reveal">Built With Care</div>
-          <div>
-            <h2 class="section-title reveal">Outdoor surfaces that feel finished from every angle.</h2>
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="about-layout">
+          <div class="about-visual" role="group" aria-label="Pavers' Crete LLC project photographs">
+            <figure class="about-photo about-photo-main reveal">
+              <img
+                src="assets/project-patio-wide.jpg"
+                alt="Paver patio with a low stone seating wall and geometric layout"
+                loading="lazy"
+              />
+            </figure>
+            <figure class="about-photo about-photo-detail reveal">
+              <img
+                src="assets/project-night-path.jpg"
+                alt="Curved paver walkway outlined with warm lighting at dusk"
+                loading="lazy"
+              />
+            </figure>
+            <div class="about-stamp reveal">
+              <img src="assets/logo.jpg" alt="" aria-hidden="true" />
+              <span>
+                <strong>Pavers' Crete LLC</strong>
+                <small>Built with care</small>
+              </span>
+            </div>
           </div>
-          <p class="section-copy reveal">
-            From pool decks and patios to walkways, retaining walls, steps, and decorative concrete,
-            Pavers' Crete LLC focuses on alignment, drainage, edge restraint, and a polished final
-            presentation.
-          </p>
+
+          <div class="about-copy">
+            <p class="section-kicker reveal">About Pavers' Crete LLC</p>
+            <h2 class="section-title reveal" id="about-title">
+              Outdoor spaces that feel finished from every angle.
+            </h2>
+            <p class="section-copy reveal">
+              We build patios, pool decks, walkways, and concrete surfaces with careful planning,
+              solid base preparation, and clean, precise installation.
+            </p>
+            <p class="section-copy reveal">
+              Every layout is shaped around the property and how you want to use it, with attention
+              to drainage, edge restraint, tight joints, and the details that make a project feel
+              complete.
+            </p>
+
+            <ul class="about-points">
+              <li class="reveal"><i data-lucide="check" aria-hidden="true"></i><span>Thoughtful layouts and precise cuts</span></li>
+              <li class="reveal"><i data-lucide="check" aria-hidden="true"></i><span>Careful base preparation</span></li>
+              <li class="reveal"><i data-lucide="check" aria-hidden="true"></i><span>Drainage-aware installation</span></li>
+              <li class="reveal"><i data-lucide="check" aria-hidden="true"></i><span>Clean edges and finished details</span></li>
+            </ul>
+
+            <div class="about-offerings" role="group" aria-label="Explore our services">
+              <a class="reveal" href="#service-patios"><i data-lucide="blocks" aria-hidden="true"></i><span>Paver patios</span></a>
+              <a class="reveal" href="#service-pool-decks"><i data-lucide="waves" aria-hidden="true"></i><span>Pool decks</span></a>
+              <a class="reveal" href="#service-concrete"><i data-lucide="square-stack" aria-hidden="true"></i><span>Concrete</span></a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -114,12 +158,12 @@
         </div>
 
         <div class="service-grid">
-          <article class="service-card reveal">
+          <article class="service-card reveal" id="service-patios">
             <i data-lucide="blocks"></i>
             <h3>Paver Patios</h3>
             <p>Custom layouts, borders, transitions, and patterns for outdoor rooms, lanais, and gathering areas.</p>
           </article>
-          <article class="service-card reveal">
+          <article class="service-card reveal" id="service-pool-decks">
             <i data-lucide="waves"></i>
             <h3>Pool Decks</h3>
             <p>Clean poolside surfaces with coping details, drainage attention, and resort-style finishes.</p>
@@ -134,7 +178,7 @@
             <h3>Retaining Walls</h3>
             <p>Stone walls, columns, seat walls, borders, and vertical features that shape the space.</p>
           </article>
-          <article class="service-card reveal">
+          <article class="service-card reveal" id="service-concrete">
             <i data-lucide="square-stack"></i>
             <h3>Concrete Installation</h3>
             <p>Concrete patios, slabs, pool surrounds, broom finishes, stamped textures, and flatwork solutions.</p>
@@ -395,6 +439,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=5"></script>
+    <script src="script.js?v=6"></script>
   </body>
 </html>

@@ -1356,7 +1356,7 @@ a {
 
   .chat-launcher {
     right: 16px;
-    bottom: 90px;
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
     min-height: 50px;
   }
 

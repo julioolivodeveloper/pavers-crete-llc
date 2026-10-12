@@ -25,6 +25,7 @@ const reviewCount = document.querySelector("[data-review-count]");
 const comparisonSliders = Array.from(document.querySelectorAll("[data-comparison]"));
 const typewriter = document.querySelector("[data-typewriter]");
 const contactModal = document.querySelector("[data-modal]");
+const contactWhatsAppLink = document.querySelector("[data-contact-whatsapp]");
 const closeModalButtons = Array.from(document.querySelectorAll("[data-close-modal]"));
 const contactTriggers = Array.from(document.querySelectorAll(".contact-trigger"));
 const lightbox = document.querySelector("[data-lightbox-modal]");
@@ -39,6 +40,17 @@ const chatLog = document.querySelector("[data-chat-log]");
 const chatSuggestions = document.querySelector("[data-chat-suggestions]");
 const chatForm = document.querySelector("[data-chat-form]");
 const chatInput = document.querySelector("[data-chat-input]");
+const estimatorForm = document.querySelector("[data-estimator]");
+const estimateService = document.querySelector("[data-estimate-service]");
+const estimateFieldGroups = Array.from(document.querySelectorAll("[data-estimate-fields]"));
+const estimateEmpty = document.querySelector("[data-estimate-empty]");
+const estimateReady = document.querySelector("[data-estimate-ready]");
+const estimateTotals = document.querySelector("[data-estimate-totals]");
+const estimateLow = document.querySelector("[data-estimate-low]");
+const estimateHigh = document.querySelector("[data-estimate-high]");
+const estimateSummary = document.querySelector("[data-estimate-summary]");
+const estimateNote = document.querySelector("[data-estimate-note]");
+const estimateHeading = document.querySelector("[data-estimate-heading]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let currentSlide = 0;
@@ -397,8 +409,11 @@ window.setTimeout(() => {
   });
 }, 80);
 
-function openContactModal() {
+function openContactModal(event) {
   if (!contactModal) return;
+  if (contactWhatsAppLink && !event?.currentTarget?.matches("[data-estimate-contact]")) {
+    contactWhatsAppLink.href = "https://wa.me/18432518864";
+  }
   lastFocusedElement = document.activeElement;
   contactModal.classList.add("is-open");
   contactModal.setAttribute("aria-hidden", "false");
@@ -581,3 +596,102 @@ document.addEventListener("keydown", (event) => {
     closeMobileNav();
   }
 });
+
+const estimateRates = {
+  "paver-patio": { label: "Paver patio", low: 20, high: 40, unit: "sq ft", market: "Published Horry County paver-hardscape range" },
+  "paver-pool-deck": { label: "Paver pool deck", low: 20, high: 40, unit: "sq ft", market: "Published Horry County paver-hardscape range" },
+  "paver-walkway": { label: "Paver walkway or landing", low: 20, high: 40, unit: "sq ft", market: "Published Horry County paver-hardscape range" },
+  "concrete-flatwork": { label: "Concrete patio or slab", low: 6, high: 12, unit: "sq ft", market: "Published Horry County standard patio range" },
+  "concrete-pool-deck": { label: "Concrete pool deck", low: 6, high: 18, unit: "sq ft", market: "Published concrete pool-deck planning range" },
+  "retaining-wall": { label: "Retaining wall", low: 20, high: 60, unit: "sq ft of exposed wall face", market: "Published South Carolina retaining-wall planning range" },
+};
+
+function updateEstimateFields() {
+  if (!estimateService) return;
+  const service = estimateService.value;
+  const fieldType = service === "retaining-wall" ? "wall" : service === "steps-details" ? "custom" : "surface";
+
+  estimateFieldGroups.forEach((group) => {
+    const isActive = group.dataset.estimateFields === fieldType;
+    group.hidden = !isActive;
+    group.disabled = !isActive;
+  });
+
+  if (estimateReady) estimateReady.hidden = true;
+  if (estimateEmpty) estimateEmpty.hidden = false;
+}
+
+if (estimatorForm && estimateService) {
+  const currency = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+
+  estimateService.addEventListener("change", updateEstimateFields);
+  updateEstimateFields();
+
+  estimatorForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const service = estimateService.value;
+    const rate = estimateRates[service];
+    const location = estimatorForm.elements.location.value.trim();
+    const removalNeeded = estimatorForm.elements.removal.checked;
+    const siteWork = estimatorForm.elements.siteWork.checked;
+    const details = estimatorForm.elements.details.value.trim();
+    let quantity = 0;
+    let dimensions = "";
+
+    if (service === "retaining-wall") {
+      const length = Number(estimatorForm.elements.wallLength.value);
+      const height = Number(estimatorForm.elements.wallHeight.value);
+      quantity = length * height;
+      dimensions = `${length} ft long × ${height} ft average height`;
+    } else if (rate) {
+      const length = Number(estimatorForm.elements.surfaceLength.value);
+      const width = Number(estimatorForm.elements.width.value);
+      quantity = length * width;
+      dimensions = `${length} ft × ${width} ft (${Math.round(quantity)} sq ft)`;
+    }
+
+    estimateEmpty.hidden = true;
+    estimateReady.hidden = false;
+
+    const locationLabel = location || "Horry County, SC planning range";
+    let messageLines = [
+      "Hi, I used the project estimator on your website.",
+      `Project: ${service === "steps-details" ? "Steps or finishing details" : rate.label}`,
+      `Location: ${locationLabel}`,
+    ];
+
+    if (rate) {
+      const low = quantity * rate.low;
+      const high = quantity * rate.high;
+      estimateTotals.hidden = false;
+      estimateHeading.textContent = "Estimated project range";
+      estimateLow.textContent = currency.format(low);
+      estimateHigh.textContent = currency.format(high);
+      estimateSummary.textContent = `${dimensions} · ${currency.format(rate.low)}–${currency.format(rate.high)} per ${rate.unit}.`;
+      estimateNote.textContent = `${rate.market}. This is a preliminary budget range, not a company quote. Site review may change it.`;
+      messageLines.push(`Approximate size: ${dimensions}`);
+      messageLines.push(`Preliminary market range: ${currency.format(low)}–${currency.format(high)} (not a final quote)`);
+    } else {
+      estimateTotals.hidden = true;
+      estimateHeading.textContent = "This work needs a closer look.";
+      estimateSummary.textContent = details || "Steps and finishing details depend on the layout, materials, and access at the property.";
+      estimateNote.textContent = "There is no reliable flat rate for these details. Send a short description and the team can talk through the next step.";
+      messageLines.push(`Project details: ${details || "I'd like help estimating steps or finishing details."}`);
+    }
+
+    const conditions = [];
+    if (removalNeeded) conditions.push("Existing surface removal may be needed");
+    if (siteWork) conditions.push("Limited access, grading, or drainage may be involved");
+    if (conditions.length) {
+      estimateNote.textContent += ` Not included: ${conditions.join("; ")}.`;
+      messageLines.push(`Site notes: ${conditions.join("; ")}`);
+    }
+
+    contactWhatsAppLink.href = `https://wa.me/18432518864?text=${encodeURIComponent(messageLines.join("\n"))}`;
+  });
+}

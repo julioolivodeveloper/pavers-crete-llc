@@ -33,7 +33,7 @@
       rel="stylesheet"
     />
     <link rel="icon" href="assets/logo.jpg" />
-    <link rel="stylesheet" href="styles.css?v=22" />
+    <link rel="stylesheet" href="styles.css?v=23" />
   </head>
   <body>
     <header class="site-header" data-header>
@@ -219,6 +219,7 @@
           <h2 class="section-title reveal">Paver patios, pool decks, and more.</h2>
           <p class="section-copy reveal">Choose a service to see what the work can include. The right layout, finish, and scope depend on the property and how you plan to use the space.</p>
         </div>
+        <a class="estimate-section-link reveal" href="#estimate">Plan your project range <i data-lucide="arrow-down-right" aria-hidden="true"></i></a>
 
         <div class="service-grid">
           <article class="service-card reveal" id="service-patios" style="--service-card-image: url('assets/project-patio-wide.jpg')">
@@ -257,6 +258,116 @@
             <p>Borders, edge details, joints, steps, and transitions help finish the installation. Ask about lighting-ready layouts, cleanup, or sealing coordination.</p>
             <a class="service-learn-link" href="services/finishing-details.html">Explore Finishing Details <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </article>
+        </div>
+      </section>
+
+      <section class="estimator-section" id="estimate" aria-labelledby="estimate-title">
+        <div class="section-shell">
+          <div class="estimator-heading">
+            <p class="section-kicker reveal">Project Estimator</p>
+            <h2 class="section-title reveal" id="estimate-title">Get a useful starting range.</h2>
+            <p class="section-copy reveal">
+              Choose the kind of work and enter rough dimensions. The range is for early budgeting around Horry County,
+              South Carolina; the crew will need to review the property before giving you a project price.
+            </p>
+          </div>
+
+          <div class="estimator-layout">
+            <form class="estimator-form reveal" data-estimator>
+              <div class="estimator-form-grid">
+                <label class="estimate-control estimate-control-wide">
+                  What are you planning?
+                  <select name="service" data-estimate-service>
+                    <option value="paver-patio">Paver patio</option>
+                    <option value="paver-pool-deck">Paver pool deck</option>
+                    <option value="concrete-pool-deck">Concrete pool deck</option>
+                    <option value="paver-walkway">Paver walkway or landing</option>
+                    <option value="concrete-flatwork">Concrete patio or slab</option>
+                    <option value="retaining-wall">Retaining wall</option>
+                    <option value="steps-details">Steps or finishing details</option>
+                  </select>
+                </label>
+
+                <fieldset class="estimate-fields" data-estimate-fields="surface">
+                  <legend>Approximate surface size</legend>
+                  <label class="estimate-control">
+                    Length (ft)
+                    <input name="surfaceLength" type="number" min="1" max="500" step="0.5" placeholder="e.g. 20" required data-estimate-length />
+                  </label>
+                  <label class="estimate-control">
+                    Width (ft)
+                    <input name="width" type="number" min="1" max="500" step="0.5" placeholder="e.g. 15" required data-estimate-width />
+                  </label>
+                </fieldset>
+
+                <fieldset class="estimate-fields" data-estimate-fields="wall" hidden disabled>
+                  <legend>Approximate wall size</legend>
+                  <label class="estimate-control">
+                    Wall length (ft)
+                    <input name="wallLength" type="number" min="1" max="500" step="0.5" placeholder="e.g. 20" required data-estimate-wall-length />
+                  </label>
+                  <label class="estimate-control">
+                    Average height (ft)
+                    <input name="wallHeight" type="number" min="0.5" max="4" step="0.5" placeholder="e.g. 2" required data-estimate-wall-height />
+                  </label>
+                  <p class="estimate-field-note">Taller or engineered walls need a separate review.</p>
+                </fieldset>
+
+                <fieldset class="estimate-fields estimate-fields-custom" data-estimate-fields="custom" hidden disabled>
+                  <legend>A few details help the team respond</legend>
+                  <label class="estimate-control estimate-control-wide">
+                    What would you like built or finished?
+                    <textarea name="details" rows="3" placeholder="For example: three paver steps from the patio to the yard" data-estimate-details></textarea>
+                  </label>
+                  <p class="estimate-field-note">Steps and finishing details vary too much by layout and access for a reliable per-square-foot range.</p>
+                </fieldset>
+
+                <label class="estimate-control estimate-control-wide">
+                  City or ZIP code <span class="estimate-optional">Optional</span>
+                  <input name="location" type="text" maxlength="80" placeholder="Longs, Myrtle Beach, 29568..." data-estimate-location />
+                </label>
+
+                <fieldset class="estimate-checks estimate-control-wide">
+                  <legend>Anything else the crew should know?</legend>
+                  <label><input type="checkbox" name="removal" data-estimate-removal /> Existing surface needs removal</label>
+                  <label><input type="checkbox" name="siteWork" data-estimate-sitework /> Limited access, grading, or drainage may be involved</label>
+                </fieldset>
+
+                <button class="primary-btn estimator-submit estimate-control-wide" type="submit">
+                  <i data-lucide="calculator" aria-hidden="true"></i>Calculate my range
+                </button>
+              </div>
+            </form>
+
+            <aside class="estimator-result reveal" data-estimate-result aria-live="polite" aria-atomic="true">
+              <div class="estimate-empty" data-estimate-empty>
+                <i data-lucide="ruler" aria-hidden="true"></i>
+                <h3>Your estimate will show here.</h3>
+                <p>Enter approximate measurements to see a preliminary planning range.</p>
+              </div>
+              <div class="estimate-ready" data-estimate-ready hidden>
+                <p class="estimate-result-kicker" data-estimate-kicker>Preliminary planning range</p>
+                <h3 data-estimate-heading>Estimated project range</h3>
+                <div class="estimate-total-row" data-estimate-totals>
+                  <div><span>Lower range</span><strong data-estimate-low></strong></div>
+                  <div><span>Upper range</span><strong data-estimate-high></strong></div>
+                </div>
+                <p class="estimate-result-summary" data-estimate-summary></p>
+                <p class="estimate-result-note" data-estimate-note></p>
+                <button class="estimate-whatsapp contact-trigger" type="button" data-estimate-contact>
+                  <i data-lucide="message-circle" aria-hidden="true"></i>Choose how to contact the team
+                </button>
+              </div>
+            </aside>
+          </div>
+
+          <p class="estimate-disclaimer reveal">
+            These are broad market planning ranges, not Pavers' Crete LLC prices or a formal quote. They use published
+            Horry County ranges where available and South Carolina or national references where local data is limited.
+            Demolition, hauling, permits, drainage, access, steps, coping, and unusual ground
+            conditions can change the total. Small projects may have minimum charges. Your city or ZIP is sent to the crew;
+            the calculation does not adjust rates for other markets. The crew confirms price after reviewing the site.
+          </p>
         </div>
       </section>
 
@@ -645,7 +756,7 @@
             <i data-lucide="message-square"></i>
             Text
           </a>
-          <a href="https://wa.me/18432518864" target="_blank" rel="noopener">
+          <a href="https://wa.me/18432518864" target="_blank" rel="noopener" data-contact-whatsapp>
             <i data-lucide="send"></i>
             WhatsApp
           </a>
@@ -662,6 +773,6 @@
     </div>
 
     <script src="assets/lucide.min.js"></script>
-    <script src="script.js?v=13"></script>
+    <script src="script.js?v=14"></script>
   </body>
 </html>

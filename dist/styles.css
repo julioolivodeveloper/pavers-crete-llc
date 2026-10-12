@@ -575,6 +575,11 @@ a {
   max-width: 780px;
 }
 
+.review-head .section-copy {
+  max-width: 720px;
+  margin-top: 12px;
+}
+
 .google-btn {
   flex: 0 0 auto;
   color: #ffffff;
@@ -2395,6 +2400,11 @@ a {
   font-size: 3rem;
 }
 
+.gallery-head-copy .section-copy {
+  max-width: 660px;
+  margin-top: 14px;
+}
+
 .gallery-carousel-controls {
   flex: 0 0 auto;
   display: flex;
@@ -2901,6 +2911,12 @@ a {
   font-size: 2.9rem;
 }
 
+.service-method-heading .section-copy {
+  max-width: 700px;
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.76);
+}
+
 .service-method-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2942,6 +2958,11 @@ a {
 
 .service-related-heading .section-title {
   font-size: 2.55rem;
+}
+
+.service-related-heading .section-copy {
+  max-width: 680px;
+  margin-top: 12px;
 }
 
 .service-related-links {

@@ -439,31 +439,31 @@ function getFaqAnswer(question) {
   const value = question.toLowerCase().replace(/[’']/g, "").trim();
 
   if (/\b(price|pricing|cost|estimate|quote|budget)\b/.test(value)) {
-    return "Every project is different, so pricing depends on the site, dimensions, materials, and scope. Contact the team to discuss your project and request an estimate.";
+    return "There isn't one price for every project. Cost depends on the area, site, materials, and work involved. Call or text (843) 251-8864 to discuss an estimate.";
   }
   if (/\b(how long|timeline|time|schedule|duration|days|weeks)\b/.test(value)) {
-    return "Project timing depends on the size, site conditions, materials, and scope. The team can discuss a schedule after learning more about your project.";
+    return "The time needed depends on the project size, materials, site conditions, and scope. Contact the team with a few details to discuss scheduling.";
   }
   if (/\b(area|areas|location|locations|serve|service area|where)\b/.test(value)) {
-    return "Please contact Pavers' Crete LLC to confirm availability for your project location.";
+    return "Service availability depends on location. Call or text the team with your city or ZIP code and they can confirm whether they can help.";
   }
   if (/\b(process|start|begin|first|steps)\b/.test(value)) {
-    return "Projects typically begin with a conversation about the space and layout, followed by site preparation, installation, and a final cleanup and walkthrough.";
+    return "Start by sharing what you want to build and where. The team can talk through the site, materials, scope, and next steps for your project.";
   }
   if (/\b(review|reviews|rating|google)\b/.test(value)) {
-    return "Homeowners have highlighted the team's attention to detail, punctuality, clean work, and finished results. You can read the Google reviews directly.";
+    return "The Google review summaries mention punctuality, attention to detail, and cleanup. Use View on Google to read the original reviews.";
   }
   if (/\b(clean|cleanup|maintenance|maintain|sealing|seal)\b/.test(value)) {
-    return "The right care depends on the surface and materials. Ask the team about cleanup, sealing, and maintenance options for your specific installation.";
+    return "Care depends on the surface and materials. Ask the team about cleanup, sealing, and maintenance for the specific work at your property.";
   }
   if (/\b(contact|call|text|whatsapp|phone|human|person|talk)\b/.test(value)) {
-    return "You can reach the team at (843) 251-8864. Choose Contact the team below to open WhatsApp, text, and call options.";
+    return "Call, text, or message Pavers' Crete LLC on WhatsApp at (843) 251-8864. Choose Contact the team below to pick an option.";
   }
   if (/\b(services?|pavers?|patios?|pools?|walkways?|concrete|retaining wall|steps?|install)\b/.test(value)) {
-    return "Pavers' Crete LLC installs paver patios, pool decks, walkways, steps, retaining walls, and concrete surfaces. We can also help with borders and finishing details.";
+    return "The team installs paver patios, pool decks, walkways, steps, retaining walls, and concrete surfaces. Borders and finishing details can be part of the project too.";
   }
 
-  return "I can help with services, estimates, project timing, service areas, and project care. For a specific question, use Contact the team and choose WhatsApp, text, or call.";
+  return "I don't have that detail. Contact the team at (843) 251-8864 and choose WhatsApp, text, or call to ask about your project.";
 }
 
 function appendChatMessage(message, sender, includeReviewLink = false) {

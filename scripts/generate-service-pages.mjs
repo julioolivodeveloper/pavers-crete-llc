@@ -205,8 +205,8 @@ function renderServicePage(service, index) {
         <div class="nav-service-submenu" id="mobile-service-menu" data-services-menu hidden>${serviceMenuLinks}
         </div>
         <a href="../index.html#process"><i class="nav-icon" data-lucide="list-checks" aria-hidden="true"></i><span>Process</span></a>
-        <a href="../index.html#work"><i class="nav-icon" data-lucide="images" aria-hidden="true"></i><span>Work</span></a>
-        <a href="../index.html#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
+        <a href="../portfolio.html#projects"><i class="nav-icon" data-lucide="images" aria-hidden="true"></i><span>Work</span></a>
+        <a href="../portfolio.html#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
         <button class="nav-cta contact-trigger" type="button"><i class="nav-icon" data-lucide="message-circle" aria-hidden="true"></i><span>Contact</span></button>
       </nav>
     </header>

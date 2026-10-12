@@ -28,6 +28,18 @@ const services = [
       { title: "Install and finish", body: "Lay the pavers, complete the planned cuts and borders, finish the joints, and review the patio with you." },
     ],
     relatedCopy: "A patio can connect with steps, a pool deck, or a retaining wall. Browse related work if those areas are part of your plan.",
+    planningTitle: "Make room for the way you spend time outside.",
+    planningCopy: "Before choosing a pattern, think about how people will move through the space and what should fit there. Those everyday details help shape the footprint, the edges, and the connection to the rest of the yard.",
+    planningItems: [
+      { title: "How you will use it", body: "Plan for dining, seating, a grill, or a clear route through the yard, then allow those uses to guide the patio size." },
+      { title: "Where the edges meet", body: "Consider the transition at the house, lawn, steps, existing concrete, and any nearby walls or planting beds." },
+      { title: "The site underfoot", body: "Access, existing grade, and water movement can affect preparation and layout. These are worth reviewing before materials are selected." },
+    ],
+    faqs: [
+      { question: "What affects the scope of a paver patio?", answer: "The patio dimensions, existing surface, access, base preparation, paver choice, borders, steps, and transitions all matter. The site needs to be reviewed before the work can be scoped accurately." },
+      { question: "Can a new patio connect to an existing paved area?", answer: "Often the two areas can be planned together. The height, condition, pattern, and edge of the existing surface will help determine how the connection should be handled." },
+      { question: "Can I choose a pattern and border?", answer: "Yes. Pattern, color, and border options can be discussed for the project. The final choices depend on the available materials and how the patio meets nearby surfaces." },
+    ],
   },
   {
     slug: "pool-decks",
@@ -50,6 +62,18 @@ const services = [
       { title: "Install the deck", body: "Set the agreed pavers and edge details, finish the connections around the pool, and review the completed area." },
     ],
     relatedCopy: "Pool projects may also involve a patio, walkway, steps, or retaining wall. Explore another service if your plans include those areas.",
+    planningTitle: "Start at the pool edge, then work outward.",
+    planningCopy: "A pool deck has several transitions to coordinate: the pool edge, the route from the house, and the boundary where paving meets the yard. Looking at them together makes it easier to plan comfortable walking space and a layout that fits the property.",
+    planningItems: [
+      { title: "Coping and pool shape", body: "The pool outline and the condition of the existing edge influence the cuts, borders, and connection around the water." },
+      { title: "Room to move", body: "Think about gates, doors, loungers, and the paths people use to get around the pool before settling on the deck footprint." },
+      { title: "Water and transitions", body: "The surrounding grade, drainage, steps, and edges at the lawn or house should be reviewed as part of the layout." },
+    ],
+    faqs: [
+      { question: "Can pavers be installed around an existing pool?", answer: "An existing pool can be reviewed for a paver deck. The coping, current surface, elevations, access, and condition of the area help determine what preparation and transitions are needed." },
+      { question: "How much space should the deck leave around the pool?", answer: "That depends on how the pool area is used, the space available, and the placement of doors, furniture, and paths. Discussing those uses during the site review helps set a practical layout." },
+      { question: "Can the deck connect to a patio or walkway?", answer: "Yes, connected surfaces can be planned together. Their elevations, edges, materials, and water flow should be considered so the transitions fit the site." },
+    ],
   },
   {
     slug: "walkways-steps",
@@ -72,6 +96,18 @@ const services = [
       { title: "Lay the path", body: "Install the pavers and planned transitions, finish the edges and joints, and review the route with you." },
     ],
     relatedCopy: "Walkways often connect a patio, pool deck, or retaining wall. Browse those services if your project covers more than the path.",
+    planningTitle: "A good path begins with where it needs to go.",
+    planningCopy: "An entry path, side-yard walkway, or set of garden steps should suit the route people actually take. The turns, slope, landing areas, and connections to doors and paved spaces all help determine the final layout.",
+    planningItems: [
+      { title: "Route and width", body: "Identify the start and destination, how the path will be used, and where it needs to pass existing trees, beds, or utilities." },
+      { title: "Slope and steps", body: "Changes in elevation, landings, and the available run affect how a walkway or stair connection can be laid out." },
+      { title: "Finishing the connections", body: "Borders and transitions at a driveway, patio, porch, or lawn help the route feel connected to the property." },
+    ],
+    faqs: [
+      { question: "Can a walkway be built on a sloped yard?", answer: "A sloped site can be reviewed to see how the route, grade, steps, and landings should work together. The possible layout depends on the space and the amount of elevation change." },
+      { question: "Can steps and a walkway be part of the same project?", answer: "Yes. They can be planned as one continuous route, including where steps begin, where a landing may help, and how the path meets the home or another paved area." },
+      { question: "Can a new walkway match my patio?", answer: "The team can discuss paver colors, patterns, and borders that coordinate with an existing patio. Matching depends on the original material and what is currently available." },
+    ],
   },
   {
     slug: "retaining-walls",
@@ -94,6 +130,18 @@ const services = [
       { title: "Build and finish", body: "Install the agreed wall and finishing details, tidy the work area, and review the completed work with you." },
     ],
     relatedCopy: "Retaining walls can be part of a patio, walkway, or step project. Explore those pages if the grade change involves other outdoor work.",
+    planningTitle: "Understand the change in grade before choosing the finish.",
+    planningCopy: "A retaining wall affects more than the line where the yard changes height. Its location, ends, cap, nearby paving, and how water moves around the area all deserve attention while the scope is being discussed.",
+    planningItems: [
+      { title: "Height and placement", body: "The slope, boundaries, and purpose of the wall help define where it belongs and how it relates to the usable yard." },
+      { title: "What the wall connects to", body: "Patios, paths, steps, fences, and planting areas can affect the wall's ends, cap, and finished appearance." },
+      { title: "Site conditions", body: "Access, grade, and water movement should be reviewed before materials and scope are finalized. Requirements can vary by property and wall." },
+    ],
+    faqs: [
+      { question: "Can a retaining wall create a more usable level area?", answer: "A wall may help define a change in grade and the space around it. Whether that is practical depends on the slope, available room, drainage, and the intended wall scope." },
+      { question: "Can the wall include a cap, columns, or a seat wall?", answer: "Those details can be discussed as part of the design. The layout and material need to suit the wall, nearby paving, and how the area will be used." },
+      { question: "What should be reviewed before building a wall?", answer: "The wall location, height, site access, surrounding grade, water movement, and nearby structures should be reviewed. Any project-specific requirements should be confirmed for the property before work begins." },
+    ],
   },
   {
     slug: "concrete-installation",
@@ -116,6 +164,18 @@ const services = [
       { title: "Place and review", body: "Complete the agreed concrete work, attend to the planned edges and connections, and review the area with you." },
     ],
     relatedCopy: "Concrete can meet pavers, steps, a pool deck, or a patio. Browse related services if your plan includes more than one surface.",
+    planningTitle: "Choose the surface for what it needs to handle.",
+    planningCopy: "A concrete patio, pool surround, or slab starts with its intended use and the surfaces around it. Dimensions, access, finish, edges, and joints are easier to discuss together than as last-minute details.",
+    planningItems: [
+      { title: "Use and dimensions", body: "Decide what the area will support and where it should begin and end. Those details help establish the footprint and access needs." },
+      { title: "Finish and appearance", body: "Broom and stamped finishes are options to ask about. The suitable finish depends on the project, available choices, and surrounding surfaces." },
+      { title: "Joints and transitions", body: "Edges and joints, plus connections to a house, pool, pavers, or steps, should be part of the initial scope discussion." },
+    ],
+    faqs: [
+      { question: "What information helps plan a concrete estimate?", answer: "Share the approximate dimensions, intended use, access to the work area, preferred finish, and what the new surface will connect to. A site review helps confirm the details." },
+      { question: "What is the difference between broom and stamped finishes?", answer: "A broom finish has a textured appearance, while a stamped finish creates a pattern in the concrete. Ask which finish options fit the project and what is available for the site." },
+      { question: "Can concrete meet an existing paver area?", answer: "The two surfaces can be considered together. Their heights, edges, drainage, and the condition of the existing paving affect how the transition should be planned." },
+    ],
   },
   {
     slug: "finishing-details",
@@ -138,7 +198,27 @@ const services = [
       { title: "Complete the closeout", body: "Finish the agreed details, clean the work area, and review the completed surfaces with you." },
     ],
     relatedCopy: "Finishing details are part of patio, pool deck, walkway, wall, and concrete projects. Browse a specific service for more information.",
+    planningTitle: "The edges are part of the design, not an afterthought.",
+    planningCopy: "Borders, cuts, joints, and transitions shape how a finished hardscape reads. Reviewing these details alongside the main surface helps keep the pattern and connections consistent across the project.",
+    planningItems: [
+      { title: "Borders and edges", body: "A border can define the paved area or create a visual frame. Its material and layout should suit the field pattern and edge conditions." },
+      { title: "Cuts and transitions", body: "Steps, walls, drains, and adjoining surfaces can require careful cuts and changes in material or elevation." },
+      { title: "Final coordination", body: "Joint finish, cleanup, and any discussion of sealing can be included in the project conversation, depending on the agreed scope." },
+    ],
+    faqs: [
+      { question: "Can I add a contrasting paver border?", answer: "A contrasting border may be an option. The layout depends on the shape of the surface, the field pattern, available materials, and the edges it needs to meet." },
+      { question: "Are finishing details part of a larger patio or walkway project?", answer: "They can be planned as part of the overall scope. Discuss edges, cuts, joints, and transitions before work begins so they are accounted for in the project." },
+      { question: "Do you include sealing?", answer: "Sealing needs and options vary by surface and material. Ask the team whether it is suitable and available for the specific project; it should not be assumed as part of every installation." },
+    ],
   },
+];
+
+const googleReviews = [
+  { name: "P.E. Gates", summary: "The reviewer praised the team's punctuality and attention to detail on entrance pavers and a patio extension." },
+  { name: "James Lambert", summary: "Two larger projects were completed on the estimated schedule and budget, with no surprises." },
+  { name: "Mike Duskus", summary: "The reviewer appreciated the setup and cleanup on a paver patio by the pond." },
+  { name: "John Livingston", summary: "The project finished ahead of schedule, and the reviewer was happy with the clean work and final result." },
+  { name: "Kathy Spinozzi", summary: "The reviewer praised the workmanship and follow-through, and said they would consider the team for future work." },
 ];
 
 const escapeHtml = (value) => value.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
@@ -153,6 +233,9 @@ function renderServicePage(service, index) {
   const bullets = service.bullets.map((item) => `<li><i data-lucide="check" aria-hidden="true"></i><span>${escapeHtml(item)}</span></li>`).join("\n            ");
   const proofPoints = service.proofPoints.map((item) => `<span><i data-lucide="check" aria-hidden="true"></i>${escapeHtml(item)}</span>`).join("\n          ");
   const methodSteps = service.methodSteps.map((step, stepIndex) => `<article class="service-method-step reveal"><span>${String(stepIndex + 1).padStart(2, "0")}</span><h3>${escapeHtml(step.title)}</h3><p>${escapeHtml(step.body)}</p></article>`).join("\n            ");
+  const planningItems = service.planningItems.map((item, itemIndex) => `<article class="service-planning-item reveal"><span>${String(itemIndex + 1).padStart(2, "0")}</span><div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.body)}</p></div></article>`).join("\n            ");
+  const faqs = service.faqs.map((faq) => `<details class="service-faq-item"><summary><span>${escapeHtml(faq.question)}</span><i data-lucide="plus" aria-hidden="true"></i></summary><p>${escapeHtml(faq.answer)}</p></details>`).join("\n            ");
+  const reviewCards = googleReviews.map((review) => `<article class="review-card reveal" data-review-slide><div class="stars" aria-label="5 star review">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>${escapeHtml(review.summary)}</p><footer>${escapeHtml(review.name)} <span>Google review summary</span></footer></article>`).join("\n            ");
   const serviceMenuLinks = services.map((item) => `
           <a href="./${item.slug}.html"${item.slug === service.slug ? ' aria-current="page"' : ""}><i class="nav-icon" data-lucide="${item.icon}" aria-hidden="true"></i><span>${escapeHtml(item.title)}</span></a>`).join("");
   const relatedLinks = related.map((item) => `
@@ -187,7 +270,7 @@ function renderServicePage(service, index) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
     <link rel="icon" href="../assets/logo.jpg" />
-    <link rel="stylesheet" href="../styles.css?v=21" />
+    <link rel="stylesheet" href="../styles.css?v=24" />
   </head>
   <body class="service-detail-page">
     <header class="site-header" data-header>
@@ -206,7 +289,7 @@ function renderServicePage(service, index) {
         </div>
         <a href="../index.html#process"><i class="nav-icon" data-lucide="list-checks" aria-hidden="true"></i><span>Process</span></a>
         <a href="../portfolio.html#projects"><i class="nav-icon" data-lucide="images" aria-hidden="true"></i><span>Work</span></a>
-        <a href="../portfolio.html#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
+        <a href="#reviews"><i class="nav-icon" data-lucide="star" aria-hidden="true"></i><span>Reviews</span></a>
         <button class="nav-cta contact-trigger" type="button"><i class="nav-icon" data-lucide="message-circle" aria-hidden="true"></i><span>Contact</span></button>
       </nav>
     </header>
@@ -248,6 +331,20 @@ function renderServicePage(service, index) {
         </figure>
       </section>
 
+      <section class="service-planning">
+        <div class="section-shell service-planning-layout">
+          <div class="service-planning-intro">
+            <p class="section-kicker reveal">A Few Things to Think Through</p>
+            <h2 class="section-title reveal">${escapeHtml(service.planningTitle)}</h2>
+            <p class="section-copy reveal">${escapeHtml(service.planningCopy)}</p>
+            <button class="text-link contact-trigger reveal" type="button">Talk through the details<i data-lucide="arrow-up-right" aria-hidden="true"></i></button>
+          </div>
+          <div class="service-planning-list">
+            ${planningItems}
+          </div>
+        </div>
+      </section>
+
       <section class="service-method">
         <div class="section-shell">
           <div class="service-method-heading">
@@ -269,6 +366,42 @@ function renderServicePage(service, index) {
         </div>
         <div class="service-related-links">${relatedLinks}
           <a class="service-related-link" href="../index.html#services"><span>View all services</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+        </div>
+      </section>
+
+      <section class="service-faq-section" aria-labelledby="service-faq-title">
+        <div class="section-shell service-faq-layout">
+          <div class="service-faq-heading">
+            <p class="section-kicker reveal">Questions About ${title}</p>
+            <h2 class="section-title reveal" id="service-faq-title">A few useful things to know.</h2>
+            <p class="section-copy reveal">Every property is different. These answers can help you prepare for a conversation about the site and the work.</p>
+          </div>
+          <div class="service-faq-list">
+            ${faqs}
+          </div>
+        </div>
+      </section>
+
+      <section class="reviews section-shell service-reviews" id="reviews" aria-labelledby="service-reviews-title">
+        <div class="review-head">
+          <div>
+            <p class="section-kicker reveal">Google Reviews</p>
+            <h2 class="section-title reveal" id="service-reviews-title">What customers say about the work.</h2>
+            <p class="section-copy reveal">These are summaries of customer reviews, not direct quotes. Read the original reviews on Google.</p>
+          </div>
+          <div class="review-actions">
+            <div class="review-carousel-controls" role="group" aria-label="Review carousel controls">
+              <span class="review-count" data-review-count aria-live="polite">01-03 / 05</span>
+              <button class="review-arrow" type="button" data-review-prev aria-label="Previous reviews" title="Previous reviews" disabled><i data-lucide="arrow-left"></i></button>
+              <button class="review-arrow" type="button" data-review-next aria-label="Next reviews" title="Next reviews"><i data-lucide="arrow-right"></i></button>
+            </div>
+            <a class="google-btn reveal" href="https://www.google.com/maps?cid=13667308921485443592" target="_blank" rel="noopener"><i data-lucide="external-link"></i>View on Google</a>
+          </div>
+        </div>
+        <div class="review-viewport" data-review-viewport role="region" aria-label="Pavers' Crete LLC customer reviews carousel" tabindex="0">
+          <div class="review-grid review-track" data-review-track>
+            ${reviewCards}
+          </div>
         </div>
       </section>
 
